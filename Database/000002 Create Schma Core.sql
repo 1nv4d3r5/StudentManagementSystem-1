@@ -1,0 +1,4 @@
+USE [SMS]
+GO
+
+EXEC( 'CREATE SCHEMA [Core]' );

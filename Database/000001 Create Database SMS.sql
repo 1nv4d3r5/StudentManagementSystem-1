@@ -1,0 +1,4 @@
+IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'SMS')
+BEGIN
+	CREATE DATABASE [SMS]
+END	
