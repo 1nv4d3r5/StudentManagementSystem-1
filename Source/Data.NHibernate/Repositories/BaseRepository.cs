@@ -24,5 +24,10 @@
         {
             return session.Query<TDomain>().ToList();
         }
+
+        public void SaveOrUpdate(TDomain domain)
+        {
+            this.session.SaveOrUpdate(domain);
+        }
     }
 }
