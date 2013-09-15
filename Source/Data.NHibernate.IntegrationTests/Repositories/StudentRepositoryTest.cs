@@ -71,5 +71,19 @@
             Assert.That(studentRetrievedAfterUpdate.Id, Is.EqualTo(studentRetrievedAfterAdd.Id));
             Assert.That(studentRetrievedAfterUpdate.MiddleName, Is.EqualTo(MiddleName));
         }
+
+        [Test]
+        public void ShouldAddCommitAndDeleteStudent()
+        {
+            var student = new Student { FirstName = "A", LastName = "C", RollNumber = "12345", JoinDate = DateTime.Now };
+            studentRepository.SaveOrUpdate(student);
+            studentRepository.CommitAndCloseSession();
+
+            studentRepository.Delete(student);
+            studentRepository.CommitAndCloseSession();
+
+            var studentRetrievedAfterDelete = studentRepository.GetById(student.Id);
+            Assert.IsNull(studentRetrievedAfterDelete);
+        }
     }
 }
