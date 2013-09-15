@@ -2,6 +2,8 @@
 {
     using System;
 
+    using Domain;
+
     using NHibernate.Repositories;
 
     using NUnit.Framework;
@@ -9,10 +11,17 @@
     [TestFixture]
     public class StudentRepositoryTest
     {
+        private BaseRepository<Student> studentRepository;
+
+        [SetUp]
+        public void SetUp()
+        {
+            this.studentRepository = new BaseRepository<Student>();
+        }
+
         [Test]
         public void ShouldGetStudentById()
         {
-            var studentRepository = new StudentRepository();
             var student = studentRepository.GetById(1);
             Console.WriteLine();
             Console.WriteLine("RollNumber \t {0}", student.RollNumber);
@@ -25,7 +34,6 @@
         [Test]
         public void ShouldGetAllStudents()
         {
-            var studentRepository = new StudentRepository();
             var students = studentRepository.GetAll();
             foreach (var student in students)
             {

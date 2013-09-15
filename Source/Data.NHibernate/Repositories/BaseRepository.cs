@@ -5,25 +5,23 @@
 
     using Config;
 
-    using Domain;
-
     using global::NHibernate.Linq;
 
-    public class StudentRepository
+    public class BaseRepository<TDomain> where TDomain : class
     {
-        public Student GetById(int id)
+        public TDomain GetById(int id)
         {
             using (var session = NHibernateSessionConfiguration.OpenSession())
             {
-                return session.Get<Student>(id);
+                return session.Get<TDomain>(id);
             }
         }
 
-        public List<Student> GetAll()
+        public List<TDomain> GetAll()
         {
             using (var session = NHibernateSessionConfiguration.OpenSession())
             {
-                return session.Query<Student>().ToList();
+                return session.Query<TDomain>().ToList();
             }
         }
     }
