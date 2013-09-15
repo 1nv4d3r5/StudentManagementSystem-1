@@ -13,31 +13,11 @@
 
     public class NHibernateSessionConfiguration
     {
-        private static ISessionFactory sessionFactory;
-
-        private static ISessionFactory GetSessionFactory
-        {
-            get
-            {
-                if (sessionFactory == null)
-                {
-                    InitializeSessionFactory();
-                }
-
-                return sessionFactory;
-            }
-        }
-
-        public static ISession OpenSession()
-        {
-            return GetSessionFactory.OpenSession();
-        }
-
-        private static void InitializeSessionFactory()
+        internal static ISessionFactory InitializeSessionFactory()
         {
             Action<MsSqlConnectionStringBuilder> connectionStringExpression =
                 c => c.Database("SMS").Server(".").TrustedConnection();
-            sessionFactory =
+            return 
                 Fluently.Configure()
                         .Database(MsSqlConfiguration.MsSql2008.ConnectionString(connectionStringExpression).ShowSql())
                         .Mappings(m => m.HbmMappings.AddFromAssemblyOf<Student>())

@@ -3,26 +3,26 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using Config;
-
+    using global::NHibernate;
     using global::NHibernate.Linq;
 
     public class BaseRepository<TDomain> where TDomain : class
     {
+        private readonly ISession session;
+
+        public BaseRepository()
+        {
+            session = SessionHelper.GetSession();
+        }
+
         public TDomain GetById(int id)
         {
-            using (var session = NHibernateSessionConfiguration.OpenSession())
-            {
-                return session.Get<TDomain>(id);
-            }
+            return session.Get<TDomain>(id);
         }
 
         public List<TDomain> GetAll()
         {
-            using (var session = NHibernateSessionConfiguration.OpenSession())
-            {
-                return session.Query<TDomain>().ToList();
-            }
+            return session.Query<TDomain>().ToList();
         }
     }
 }
