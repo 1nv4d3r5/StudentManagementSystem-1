@@ -8,6 +8,8 @@
 
     using NUnit.Framework;
 
+    using Utils;
+
     [TestFixture]
     public class StudentRepositoryTest : BaseTestFixture
     {

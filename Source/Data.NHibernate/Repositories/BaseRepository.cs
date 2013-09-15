@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using Utils;
+
     using global::NHibernate;
     using global::NHibernate.Linq;
 
@@ -39,7 +41,7 @@
 
         private static ISession GetSession()
         {
-            return SessionHelper.GetSession();
+            return SessionProvider.GetSession();
         }
     }
 }

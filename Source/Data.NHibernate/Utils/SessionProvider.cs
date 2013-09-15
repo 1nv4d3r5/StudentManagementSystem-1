@@ -1,10 +1,10 @@
-﻿namespace Data.NHibernate.Repositories
+﻿namespace Data.NHibernate.Utils
 {
     using Config;
 
     using global::NHibernate;
 
-    public class SessionHelper
+    public class SessionProvider
     {
         private static ISessionFactory sessionFactory;
 

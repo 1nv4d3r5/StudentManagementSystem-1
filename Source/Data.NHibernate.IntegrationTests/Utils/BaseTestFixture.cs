@@ -1,9 +1,9 @@
-﻿namespace Data.NHibernate.IntegrationTests.Repositories
+﻿namespace Data.NHibernate.IntegrationTests.Utils
 {
     using System;
     using System.Transactions;
 
-    using NHibernate.Repositories;
+    using NHibernate.Utils;
 
     using NUnit.Framework;
 
@@ -21,14 +21,14 @@
         public void SetUpTransactions()
         {
             this.transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TimeSpan(0, 0, 1, 0));
-            Session = SessionHelper.GetSession();
+            this.Session = SessionProvider.GetSession();
         }
 
         [TearDown]
         public void TearDownTransactions()
         {
 
-            var session = SessionHelper.GetSession();
+            var session = SessionProvider.GetSession();
 
             if (session.Transaction.IsActive)
             {
@@ -45,7 +45,7 @@
 
         protected void FlushAndClearSession()
         {
-            var session = SessionHelper.GetSession();
+            var session = SessionProvider.GetSession();
             session.Flush();
             session.Clear();
         }
