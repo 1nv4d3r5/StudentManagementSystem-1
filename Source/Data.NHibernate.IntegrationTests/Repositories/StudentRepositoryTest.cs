@@ -1,6 +1,7 @@
 ﻿namespace Data.NHibernate.IntegrationTests.Repositories
 {
     using System;
+    using System.Data.SqlClient;
 
     using Domain;
 
@@ -78,6 +79,20 @@
 
             var studentRetrievedAfterDelete = studentRepository.GetById(student.Id);
             Assert.IsNull(studentRetrievedAfterDelete);
+        }
+
+        [Test]
+        public void ShouldCheckUniqueConstaintOfRollNumber()
+        {
+            var student1 = new Student { FirstName = "A", LastName = "C", RollNumber = "12345" };
+            studentRepository.SaveOrUpdate(student1);
+            FlushAndClearSession();
+
+            var student2 = new Student { FirstName = "A", LastName = "C", RollNumber = "12345" };
+
+            var exception = Assert.Catch(() => studentRepository.SaveOrUpdate(student2));
+            Assert.That(exception.InnerException.GetType(), Is.EqualTo(typeof(SqlException)));
+            Assert.That(exception.InnerException.Message.Contains("Violation of UNIQUE KEY constraint"));
         }
     }
 }
