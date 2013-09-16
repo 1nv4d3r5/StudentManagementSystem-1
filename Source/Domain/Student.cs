@@ -15,5 +15,7 @@
         public virtual string LastName { get; set; }
 
         public virtual DateTime JoinDate { get; set; }
+
+        public virtual Department Department { get; set; }
     }
 }

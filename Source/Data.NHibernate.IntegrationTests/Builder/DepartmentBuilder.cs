@@ -15,12 +15,6 @@
             this.Name = string.Format("Department{0}", new Random().Next(int.MaxValue));
         }
 
-        public DepartmentBuilder(string code, string name)
-        {
-            this.Code = code;
-            this.Name = name;
-        }
-
         public Department Build()
         {
             var department = new Department

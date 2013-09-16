@@ -4,24 +4,23 @@
 
     using Domain;
 
+    using NHibernate.Repositories;
+
     public class StudentBuilder
     {
         private string RollNumber { get; set; }
         private string FirstName { get; set; }
         private string LastName { get; set; }
+        private Department Department { get; set; }
 
         public StudentBuilder()
         {
             this.RollNumber = string.Format("R{0}", new Random().Next(int.MaxValue));
             this.FirstName = "FirstName";
             this.LastName = "LastName";
-        }
+            var department = new DepartmentRepository().GetByCode("ECE");
+            this.Department = department;
 
-        public StudentBuilder(string rollNumber, string firstName, string lastName)
-        {
-            this.RollNumber = rollNumber;
-            this.FirstName = firstName;
-            this.LastName = lastName;
         }
 
         public Student Build()
@@ -30,7 +29,8 @@
                               {
                                   RollNumber = this.RollNumber,
                                   FirstName = this.FirstName,
-                                  LastName = this.LastName
+                                  LastName = this.LastName,
+                                  Department = this.Department
                               };
             return student;
         }

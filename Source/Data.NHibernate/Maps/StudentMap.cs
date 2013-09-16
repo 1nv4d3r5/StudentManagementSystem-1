@@ -16,6 +16,7 @@
             this.Map(student => student.MiddleName);
             this.Map(student => student.LastName);
             this.Map(student => student.JoinDate).ReadOnly();
+            this.References(student => student.Department).Column("DepartmentId");
         }
     }
 }
