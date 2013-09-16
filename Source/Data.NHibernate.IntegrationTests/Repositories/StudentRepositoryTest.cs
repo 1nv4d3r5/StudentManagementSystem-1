@@ -3,6 +3,8 @@
     using System;
     using System.Data.SqlClient;
 
+    using Builder;
+
     using Domain;
 
     using NHibernate.Repositories;
@@ -32,7 +34,7 @@
         [Test]
         public void ShouldGenerateJoinDateByDefault()
         {
-            var student = new Student { FirstName = "A", LastName = "C", RollNumber = "12345" };
+            var student = new StudentBuilder().Build();
             studentRepository.SaveOrUpdate(student);
             FlushAndClearSession();
 
@@ -45,7 +47,7 @@
         [Test]
         public void ShouldSaveFetchAndUpdateStudent()
         {
-            var student = new Student { FirstName = "A", LastName = "C", RollNumber = "12345" };
+            var student = new StudentBuilder().Build();
             studentRepository.SaveOrUpdate(student);
             FlushAndClearSession();
 
@@ -70,7 +72,7 @@
         [Test]
         public void ShouldAddCommitAndDeleteStudent()
         {
-            var student = new Student { FirstName = "A", LastName = "C", RollNumber = "12345" };
+            var student = new StudentBuilder().Build();
             studentRepository.SaveOrUpdate(student);
             studentRepository.CommitAndCloseSession();
 
@@ -84,11 +86,11 @@
         [Test]
         public void ShouldCheckUniqueConstaintOfRollNumber()
         {
-            var student1 = new Student { FirstName = "A", LastName = "C", RollNumber = "12345" };
+            var student1 = new StudentBuilder().WithRollNumber("12345").Build();
             studentRepository.SaveOrUpdate(student1);
             FlushAndClearSession();
 
-            var student2 = new Student { FirstName = "A", LastName = "C", RollNumber = "12345" };
+            var student2 = new StudentBuilder().WithRollNumber("12345").Build();
 
             var exception = Assert.Catch(() => studentRepository.SaveOrUpdate(student2));
             Assert.That(exception.InnerException.GetType(), Is.EqualTo(typeof(SqlException)));
