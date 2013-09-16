@@ -48,8 +48,10 @@
     <Reference Include="System.Transactions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\DepartmentBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Builder\StudentBuilder.cs" />
+    <Compile Include="Repositories\DepartmentRepositoryTest.cs" />
     <Compile Include="Utils\BaseTestFixture.cs" />
     <Compile Include="Repositories\StudentRepositoryTest.cs" />
   </ItemGroup>
