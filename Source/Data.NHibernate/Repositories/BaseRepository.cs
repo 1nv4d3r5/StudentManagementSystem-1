@@ -39,7 +39,7 @@
             session.Close();
         }
 
-        private static ISession GetSession()
+        protected static ISession GetSession()
         {
             return SessionProvider.GetSession();
         }

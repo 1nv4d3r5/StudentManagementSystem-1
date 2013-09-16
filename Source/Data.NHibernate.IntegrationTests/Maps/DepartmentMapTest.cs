@@ -13,12 +13,12 @@
     [TestFixture]
     public class DepartmentMapTest : BaseTestFixture
     {
-        private BaseRepository<Department> departmentRepository;
+        private DepartmentRepository departmentRepository;
 
         [SetUp]
         public void SetUp()
         {
-            this.departmentRepository = new BaseRepository<Department>();
+            this.departmentRepository = new DepartmentRepository();
         }
 
         [Test]

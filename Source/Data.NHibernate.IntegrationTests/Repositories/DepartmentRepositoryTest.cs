@@ -4,8 +4,6 @@
 
     using Builder;
 
-    using Domain;
-
     using NHibernate.Repositories;
 
     using NUnit.Framework;
@@ -15,12 +13,12 @@
     [TestFixture]
     public class DepartmentRepositoryTest : BaseTestFixture
     {
-        private BaseRepository<Department> departmentRepository;
+        private DepartmentRepository departmentRepository;
 
         [SetUp]
         public void SetUp()
         {
-            departmentRepository = new BaseRepository<Department>();
+            departmentRepository = new DepartmentRepository();
         }
 
         [Test]
@@ -42,6 +40,30 @@
             var exception = Assert.Catch(() => this.departmentRepository.SaveOrUpdate(department2));
             Assert.That(exception.InnerException.GetType(), Is.EqualTo(typeof(SqlException)));
             Assert.That(exception.InnerException.Message.Contains("Violation of UNIQUE KEY constraint"));
+        }
+
+        [Test]
+        public void ShouldGetDepartmentByCode()
+        {
+            const string DepartmentCode = "DD1";
+            var department = new DepartmentBuilder().WithDepartmentCode(DepartmentCode).Build();
+            departmentRepository.SaveOrUpdate(department);
+            FlushAndClearSession();
+
+            var departmentRetrieved = departmentRepository.GetByCode(DepartmentCode);
+
+            Assert.IsNotNull(departmentRetrieved);
+            Assert.That(department.Id, Is.EqualTo(departmentRetrieved.Id));
+        }
+
+        [Test]
+        public void ShouldReturnNullWhenDepartmentCodeIsWrong()
+        {
+            const string DepartmentCode = "Some Code";
+
+            var departmentRetrieved = departmentRepository.GetByCode(DepartmentCode);
+
+            Assert.IsNull(departmentRetrieved);
         }
     }
 }
