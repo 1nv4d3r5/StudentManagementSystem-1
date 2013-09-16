@@ -15,7 +15,7 @@
             this.Map(student => student.FirstName);
             this.Map(student => student.MiddleName);
             this.Map(student => student.LastName);
-            this.Map(student => student.JoinDate);
+            this.Map(student => student.JoinDate).ReadOnly();
         }
     }
 }

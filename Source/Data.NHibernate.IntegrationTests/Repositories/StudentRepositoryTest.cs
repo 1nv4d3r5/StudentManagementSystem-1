@@ -50,9 +50,22 @@
         }
 
         [Test]
+        public void ShouldGenerateJoinDateByDefault()
+        {
+            var student = new Student { FirstName = "A", LastName = "C", RollNumber = "12345" };
+            studentRepository.SaveOrUpdate(student);
+            FlushAndClearSession();
+
+            var studentRetrievedRetrieved = studentRepository.GetById(student.Id);
+
+            Assert.IsNotNull(studentRetrievedRetrieved);
+            Assert.That(studentRetrievedRetrieved.JoinDate.Date, Is.EqualTo(DateTime.Now.Date));
+        }
+
+        [Test]
         public void ShouldSaveAndUpdateStudent()
         {
-            var student = new Student { FirstName = "A", LastName = "C", RollNumber = "12345", JoinDate = DateTime.Now };
+            var student = new Student { FirstName = "A", LastName = "C", RollNumber = "12345" };
             studentRepository.SaveOrUpdate(student);
             FlushAndClearSession();
 
@@ -77,7 +90,7 @@
         [Test]
         public void ShouldAddCommitAndDeleteStudent()
         {
-            var student = new Student { FirstName = "A", LastName = "C", RollNumber = "12345", JoinDate = DateTime.Now };
+            var student = new Student { FirstName = "A", LastName = "C", RollNumber = "12345" };
             studentRepository.SaveOrUpdate(student);
             studentRepository.CommitAndCloseSession();
 
