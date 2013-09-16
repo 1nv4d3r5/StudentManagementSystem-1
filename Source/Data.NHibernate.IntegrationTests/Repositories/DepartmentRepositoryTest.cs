@@ -31,19 +31,6 @@
         }
 
         [Test]
-        public void ShouldSaveAndFetchDepartment()
-        {
-            var department = new DepartmentBuilder().Build();
-            departmentRepository.SaveOrUpdate(department);
-            FlushAndClearSession();
-
-            var departmentRetrieved = departmentRepository.GetById(department.Id);
-
-            Assert.IsNotNull(departmentRetrieved);
-            Assert.That(departmentRetrieved.Id, Is.Not.EqualTo(0));
-        }
-
-        [Test]
         public void ShouldCheckUniqueConstaintOfRollNumber()
         {
             var department1 = new DepartmentBuilder().WithDepartmentCode("DD1").Build();

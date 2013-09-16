@@ -6,6 +6,10 @@
 
     public class StudentBuilder
     {
+        private string RollNumber { get; set; }
+        private string FirstName { get; set; }
+        private string LastName { get; set; }
+
         public StudentBuilder()
         {
             this.RollNumber = string.Format("R{0}", new Random().Next(int.MaxValue));
@@ -19,12 +23,6 @@
             this.FirstName = firstName;
             this.LastName = lastName;
         }
-
-        public string RollNumber { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
 
         public Student Build()
         {
