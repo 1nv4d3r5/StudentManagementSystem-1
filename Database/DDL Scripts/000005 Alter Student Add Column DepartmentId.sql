@@ -12,3 +12,14 @@ ALTER TABLE [Core].[Student]
 
 ALTER TABLE [Core].[Student] DROP CONSTRAINT DF_Student_DepartmentId 
 GO
+
+--//@UNDO
+
+USE [SMS]
+GO
+
+ALTER TABLE [Core].[Student] DROP CONSTRAINT FK_Student_DepartmentId
+GO
+
+ALTER TABLE [Core].[Student] DROP COLUMN DepartmentId
+Go

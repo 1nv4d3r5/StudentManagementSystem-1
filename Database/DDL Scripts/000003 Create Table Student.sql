@@ -20,3 +20,12 @@ GO
 
 ALTER TABLE [Core].[Student] ADD CONSTRAINT UK_Student_JoinDate DEFAULT GETDATE() FOR [JoinDate]
 GO
+
+
+--//@UNDO
+
+USE [SMS]
+GO
+
+DROP TABLE [Core].[Student]
+GO

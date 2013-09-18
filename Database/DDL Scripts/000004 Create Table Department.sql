@@ -17,3 +17,12 @@ GO
 
 ALTER TABLE [Core].[Department] ADD CONSTRAINT UK_Department_Name UNIQUE (Name)
 GO
+
+
+--//@UNDO
+
+USE [SMS]
+GO
+
+DROP TABLE [Core].[Department]
+GO

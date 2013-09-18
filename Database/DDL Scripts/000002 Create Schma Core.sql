@@ -2,3 +2,10 @@ USE [SMS]
 GO
 
 EXEC( 'CREATE SCHEMA [Core]' );
+
+--//@UNDO
+USE [SMS]
+GO
+
+DROP SCHEMA [Core];
+GO
