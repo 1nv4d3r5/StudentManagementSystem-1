@@ -1,16 +1,19 @@
-﻿namespace TestView
+﻿using System;
+
+using Data.NHibernate.Repositories;
+
+using Domain;
+
+namespace TestView
 {
-    using System;
-
-    using Data.NHibernate.Repositories;
-
-    using Domain;
-
     public class StudentView
     {
         private readonly BaseRepository<Student> studentRepository = new BaseRepository<Student>();
+
         public void ShouldGetAllStudents()
         {
+            Console.WriteLine("Populating Students Records");
+
             var students = this.studentRepository.GetAll();
             foreach (var student in students)
             {
