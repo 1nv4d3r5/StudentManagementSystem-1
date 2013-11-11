@@ -15,7 +15,7 @@
             return GetSession().Get<TDomain>(id);
         }
 
-        public List<TDomain> GetAll()
+        public virtual List<TDomain> GetAll()
         {
             return GetSession().Query<TDomain>().ToList();
         }
