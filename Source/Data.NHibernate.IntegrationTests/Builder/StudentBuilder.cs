@@ -9,8 +9,11 @@
     public class StudentBuilder
     {
         private string RollNumber { get; set; }
+
         private string FirstName { get; set; }
+
         private string LastName { get; set; }
+
         private Department Department { get; set; }
 
         public StudentBuilder()
@@ -20,7 +23,6 @@
             this.LastName = "LastName";
             var department = new DepartmentRepository().GetByCode("ECE");
             this.Department = department;
-
         }
 
         public Student Build()

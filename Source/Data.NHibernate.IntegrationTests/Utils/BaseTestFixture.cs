@@ -27,7 +27,6 @@
         [TearDown]
         public void TearDownTransactions()
         {
-
             var session = SessionProvider.GetSession();
 
             if (session.Transaction.IsActive)

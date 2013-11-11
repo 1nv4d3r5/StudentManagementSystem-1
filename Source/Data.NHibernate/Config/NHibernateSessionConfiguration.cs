@@ -17,7 +17,7 @@
         {
             Action<MsSqlConnectionStringBuilder> connectionStringExpression =
                 c => c.Database("SMS").Server(".").TrustedConnection();
-            return 
+            return
                 Fluently.Configure()
                         .Database(MsSqlConfiguration.MsSql2008.ConnectionString(connectionStringExpression).ShowSql())
                         .Mappings(m => m.HbmMappings.AddFromAssemblyOf<Student>())

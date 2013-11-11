@@ -7,6 +7,7 @@
     public class DepartmentBuilder
     {
         private string Code { get; set; }
+
         private string Name { get; set; }
 
         public DepartmentBuilder()
@@ -17,11 +18,7 @@
 
         public Department Build()
         {
-            var department = new Department
-                              {
-                                  Code = this.Code,
-                                  Name = this.Name,
-                              };
+            var department = new Department { Code = this.Code, Name = this.Name, };
             return department;
         }
 

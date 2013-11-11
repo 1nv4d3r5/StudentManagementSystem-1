@@ -4,7 +4,7 @@
 
     using Domain;
 
-    public class DepartmentRepository :BaseRepository<Department>
+    public class DepartmentRepository : BaseRepository<Department>
     {
         public Department GetByCode(string departmentCode)
         {

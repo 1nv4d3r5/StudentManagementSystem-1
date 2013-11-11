@@ -8,7 +8,8 @@
     using global::NHibernate;
     using global::NHibernate.Linq;
 
-    public class BaseRepository<TDomain> where TDomain : class
+    public class BaseRepository<TDomain>
+        where TDomain : class
     {
         public TDomain GetById(int id)
         {

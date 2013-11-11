@@ -56,7 +56,6 @@
             Assert.IsNotNull(studentRetrievedAfterAdd);
             Assert.That(studentRetrievedAfterAdd.Id, Is.Not.EqualTo(0));
 
-
             const string MiddleName = "B";
             studentRetrievedAfterAdd.MiddleName = MiddleName;
             studentRepository.SaveOrUpdate(studentRetrievedAfterAdd);
