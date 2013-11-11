@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 using Services.Service;
 
-namespace Services.UnitTests
+namespace Services.UnitTests.Service
 {
     [TestFixture]
     public class StudentServiceTest
@@ -23,17 +23,17 @@ namespace Services.UnitTests
         [SetUp]
         public void SetUp()
         {
-            mockStudentRepository = new Mock<BaseRepository<Student>>();
-            studentService = new StudentService(mockStudentRepository.Object);
+            this.mockStudentRepository = new Mock<BaseRepository<Student>>();
+            this.studentService = new StudentService(this.mockStudentRepository.Object);
         }
 
         [Test]
         public void ShouldGetAllStudents()
         {
             var studentsFromDb = new List<Student> { new Student { Id = 1 } };
-            mockStudentRepository.Setup(repository => repository.GetAll()).Returns(studentsFromDb);
+            this.mockStudentRepository.Setup(repository => repository.GetAll()).Returns(studentsFromDb);
 
-            var students = studentService.GetAllStudents();
+            var students = this.studentService.GetAllStudents();
 
             Assert.That(students, Is.Not.Null);
             Assert.That(students.Count, Is.EqualTo(1));
@@ -49,9 +49,9 @@ namespace Services.UnitTests
             const string RollNumber = "RollNumber";
             var studentsFromDb = new List<Student> { new Student { Id = Id, FirstName = FirstName, LastName = LastName, RollNumber = RollNumber } };
 
-            mockStudentRepository.Setup(repository => repository.GetAll()).Returns(studentsFromDb);
+            this.mockStudentRepository.Setup(repository => repository.GetAll()).Returns(studentsFromDb);
 
-            var students = studentService.GetAllStudents();
+            var students = this.studentService.GetAllStudents();
 
             Assert.That(students, Is.Not.Null);
             Assert.That(students.Count, Is.EqualTo(1));

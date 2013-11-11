@@ -48,7 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StudentServiceTest.cs" />
+    <Compile Include="Service\DepartmentServiceTest.cs" />
+    <Compile Include="Service\StudentServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
