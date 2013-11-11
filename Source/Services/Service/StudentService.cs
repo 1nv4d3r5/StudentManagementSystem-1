@@ -1,8 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 using Data.NHibernate.Repositories;
 
 using Domain;
+
+using Omu.ValueInjecter;
+
+using Services.Models;
 
 namespace Services.Service
 {
@@ -15,9 +20,10 @@ namespace Services.Service
             this.studentRepository = studentRepository;
         }
 
-        public List<Student> GetAllStudents()
+        public List<StudentViewModel> GetAllStudents()
         {
-            return studentRepository.GetAll();
+            var students = studentRepository.GetAll();
+            return students.Select(x => new StudentViewModel().InjectFrom(x)).Cast<StudentViewModel>().ToList();
         }
     }
 }
