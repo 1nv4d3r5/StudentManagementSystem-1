@@ -2,10 +2,8 @@
 
 namespace Services.Models
 {
-    public class StudentViewModel
+    public class StudentViewModel : ViewModel
     {
-        public int Id { get; set; }
-
         public string RollNumber { get; set; }
 
         public string FirstName { get; set; }

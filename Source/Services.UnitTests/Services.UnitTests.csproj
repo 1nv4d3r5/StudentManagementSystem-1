@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Service\DepartmentServiceTest.cs" />
+    <Compile Include="Service\DomainViewModelMapperTest.cs" />
     <Compile Include="Service\StudentServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

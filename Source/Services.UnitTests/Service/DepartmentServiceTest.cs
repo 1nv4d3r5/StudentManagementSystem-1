@@ -9,6 +9,7 @@ using Moq;
 
 using NUnit.Framework;
 
+using Services.Contracts;
 using Services.Service;
 
 namespace Services.UnitTests.Service
@@ -16,7 +17,7 @@ namespace Services.UnitTests.Service
     [TestFixture]
     public class DepartmentServiceTest
     {
-        private DepartmentService departmentService;
+        private IDepartmentService departmentService;
 
         private Mock<DepartmentRepository> mockDepartmentRepository;
 
@@ -33,7 +34,7 @@ namespace Services.UnitTests.Service
             var departmentsFromDb = new List<Department> { new Department { Id = 1 } };
             mockDepartmentRepository.Setup(repository => repository.GetAll()).Returns(departmentsFromDb);
 
-            var departments = this.departmentService.GetAllDepartments();
+            var departments = this.departmentService.GetAll();
 
             Assert.That(departments, Is.Not.Null);
             Assert.That(departments.Count, Is.EqualTo(1));

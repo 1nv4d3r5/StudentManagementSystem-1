@@ -3,13 +3,12 @@ using System.Linq;
 
 using Data.NHibernate.Repositories;
 
-using Omu.ValueInjecter;
-
+using Services.Contracts;
 using Services.Models;
 
 namespace Services.Service
 {
-    public class DepartmentService
+    public class DepartmentService : IDepartmentService
     {
         private readonly DepartmentRepository departmentRepository;
 
@@ -18,10 +17,10 @@ namespace Services.Service
             this.departmentRepository = departmentRepository;
         }
 
-        public List<DepartmentViewModel> GetAllDepartments()
+        public List<DepartmentViewModel> GetAll()
         {
             var departments = departmentRepository.GetAll();
-            return departments.Select(x => new DepartmentViewModel().InjectFrom(x)).Cast<DepartmentViewModel>().ToList();
+            return departments.Select(DomainViewModelMapper.Map<DepartmentViewModel>).ToList();
         }
     }
 }

@@ -5,13 +5,12 @@ using Data.NHibernate.Repositories;
 
 using Domain;
 
-using Omu.ValueInjecter;
-
+using Services.Contracts;
 using Services.Models;
 
 namespace Services.Service
 {
-    public class StudentService
+    public class StudentService : IStudentService
     {
         private readonly BaseRepository<Student> studentRepository;
 
@@ -20,10 +19,10 @@ namespace Services.Service
             this.studentRepository = studentRepository;
         }
 
-        public List<StudentViewModel> GetAllStudents()
+        public List<StudentViewModel> GetAll()
         {
             var students = studentRepository.GetAll();
-            return students.Select(x => new StudentViewModel().InjectFrom(x)).Cast<StudentViewModel>().ToList();
+            return students.Select(DomainViewModelMapper.Map<StudentViewModel>).ToList();
         }
     }
 }

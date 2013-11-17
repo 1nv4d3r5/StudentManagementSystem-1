@@ -1,4 +1,6 @@
-﻿namespace Data.NHibernate.Repositories
+﻿using Domain;
+
+namespace Data.NHibernate.Repositories
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -8,8 +10,7 @@
     using global::NHibernate;
     using global::NHibernate.Linq;
 
-    public class BaseRepository<TDomain>
-        where TDomain : class
+    public class BaseRepository<TDomain> where TDomain : Entity
     {
         public TDomain GetById(int id)
         {
