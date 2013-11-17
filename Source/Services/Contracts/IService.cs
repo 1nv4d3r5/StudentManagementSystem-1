@@ -4,8 +4,8 @@ using Services.Models;
 
 namespace Services.Contracts
 {
-    public interface IService<T> where T: ViewModel
+    public interface IService<TViewModel> where TViewModel : ViewModel
     {
-        List<T> GetAll();
+        List<TViewModel> GetAll();
     }
 }

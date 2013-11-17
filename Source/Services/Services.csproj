@@ -54,6 +54,7 @@
     <Compile Include="Contracts\IDepartmentService.cs" />
     <Compile Include="Contracts\IStudentService.cs" />
     <Compile Include="Service\DomainViewModelMapper.cs" />
+    <Compile Include="Service\Service.cs" />
     <Compile Include="Service\StudentService.cs" />
   </ItemGroup>
   <ItemGroup>

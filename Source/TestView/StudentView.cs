@@ -1,20 +1,24 @@
 ﻿using System;
 
-using Data.NHibernate.Repositories;
-
-using Domain;
+using Services.Contracts;
+using Services.Service;
 
 namespace TestView
 {
-    public class StudentView
+    public class StudentView : IStudentView
     {
-        private readonly BaseRepository<Student> studentRepository = new BaseRepository<Student>();
+        private readonly IStudentService studentService;
+
+        public StudentView(IStudentService studentService)
+        {
+            this.studentService = studentService;
+        }
 
         public void ShouldGetAllStudents()
         {
             Console.WriteLine("Populating Students Records");
 
-            var students = this.studentRepository.GetAll();
+            var students = studentService.GetAll();
             foreach (var student in students)
             {
                 Console.WriteLine();
@@ -25,5 +29,9 @@ namespace TestView
                 Console.WriteLine("JoinDate \t {0}", student.JoinDate);
             }
         }
+    }
+
+    public interface IStudentView
+    {
     }
 }

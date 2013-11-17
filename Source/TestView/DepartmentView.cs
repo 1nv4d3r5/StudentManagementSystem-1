@@ -1,19 +1,22 @@
 ﻿using System;
 
-using Data.NHibernate.Repositories;
-
-using Domain;
+using Services.Contracts;
 
 namespace TestView
 {
-    public class DepartmentView
+    public class DepartmentView : IDepartmentView
     {
-        private readonly BaseRepository<Department> departmentRepository = new BaseRepository<Department>();
+        private readonly IDepartmentService departmentService;
+
+        public DepartmentView(IDepartmentService departmentService)
+        {
+            this.departmentService = departmentService;
+        }
 
         public void ShouldGetAllDepartments()
         {
             Console.WriteLine("Populating Department Information");
-            var departments = this.departmentRepository.GetAll();
+            var departments = departmentService.GetAll();
             foreach (var department in departments)
             {
                 Console.WriteLine();
@@ -21,5 +24,9 @@ namespace TestView
                 Console.WriteLine("Department Name \t {0}", department.Name);
             }
         }
+    }
+
+    public interface IDepartmentView
+    {
     }
 }
