@@ -1,4 +1,6 @@
-﻿namespace Data.NHibernate.IntegrationTests.Repositories
+﻿using Domain;
+
+namespace Data.NHibernate.IntegrationTests.Repositories
 {
     using System.Data.SqlClient;
 
@@ -13,7 +15,7 @@
     [TestFixture]
     public class DepartmentRepositoryTest : BaseTestFixture
     {
-        private DepartmentRepository departmentRepository;
+        private IDepartmentRepository departmentRepository;
 
         [SetUp]
         public void SetUp()

@@ -13,7 +13,7 @@
     [TestFixture]
     public class DepartmentMapTest : BaseTestFixture
     {
-        private DepartmentRepository departmentRepository;
+        private IDepartmentRepository departmentRepository;
 
         [SetUp]
         public void SetUp()

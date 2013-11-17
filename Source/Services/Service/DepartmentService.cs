@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using Data.NHibernate.Repositories;
+using Domain;
 
 using Services.Contracts;
 using Services.Models;
@@ -10,9 +10,9 @@ namespace Services.Service
 {
     public class DepartmentService : IDepartmentService
     {
-        private readonly DepartmentRepository departmentRepository;
+        private readonly IDepartmentRepository departmentRepository;
 
-        public DepartmentService(DepartmentRepository departmentRepository)
+        public DepartmentService(IDepartmentRepository departmentRepository)
         {
             this.departmentRepository = departmentRepository;
         }

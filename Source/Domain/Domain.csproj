@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="Department.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="IBaseRepository.cs" />
+    <Compile Include="IDepartmentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
   </ItemGroup>

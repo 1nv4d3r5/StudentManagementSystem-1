@@ -13,7 +13,7 @@
     [TestFixture]
     public class StudentMapTest : BaseTestFixture
     {
-        private BaseRepository<Student> studentRepository;
+        private IBaseRepository<Student> studentRepository;
 
         [SetUp]
         public void SetUp()

@@ -57,10 +57,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data.NHibernate\Data.NHibernate.csproj">
-      <Project>{DFC4C80F-E5F1-44D9-8854-0A4EE15269E3}</Project>
-      <Name>Data.NHibernate</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{ACE3125C-5712-4011-87B8-53B97ACC1211}</Project>
       <Name>Domain</Name>

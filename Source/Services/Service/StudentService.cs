@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using Data.NHibernate.Repositories;
-
 using Domain;
 
 using Services.Contracts;
@@ -12,9 +10,9 @@ namespace Services.Service
 {
     public class StudentService : IStudentService
     {
-        private readonly BaseRepository<Student> studentRepository;
+        private readonly IBaseRepository<Student> studentRepository;
 
-        public StudentService(BaseRepository<Student> studentRepository)
+        public StudentService(IBaseRepository<Student> studentRepository)
         {
             this.studentRepository = studentRepository;
         }

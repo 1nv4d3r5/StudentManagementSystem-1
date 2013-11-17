@@ -57,10 +57,6 @@
     <Compile Include="Service\StudentService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data.NHibernate\Data.NHibernate.csproj">
-      <Project>{dfc4c80f-e5f1-44d9-8854-0a4ee15269e3}</Project>
-      <Name>Data.NHibernate</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{ace3125c-5712-4011-87b8-53b97acc1211}</Project>
       <Name>Domain</Name>

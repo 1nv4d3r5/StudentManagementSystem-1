@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using Data.NHibernate.Repositories;
-
 using Domain;
 
 using Moq;
@@ -19,12 +17,12 @@ namespace Services.UnitTests.Service
     {
         private IDepartmentService departmentService;
 
-        private Mock<DepartmentRepository> mockDepartmentRepository;
+        private Mock<IDepartmentRepository> mockDepartmentRepository;
 
         [SetUp]
         public void SetUp()
         {
-            mockDepartmentRepository = new Mock<DepartmentRepository>();
+            mockDepartmentRepository = new Mock<IDepartmentRepository>();
             departmentService = new DepartmentService(mockDepartmentRepository.Object);
         }
 

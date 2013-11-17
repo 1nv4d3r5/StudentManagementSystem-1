@@ -16,7 +16,7 @@
     [TestFixture]
     public class StudentRepositoryTest : BaseTestFixture
     {
-        private BaseRepository<Student> studentRepository;
+        private IBaseRepository<Student> studentRepository;
 
         [SetUp]
         public void SetUp()

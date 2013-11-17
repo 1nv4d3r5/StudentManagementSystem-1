@@ -10,24 +10,24 @@ namespace Data.NHibernate.Repositories
     using global::NHibernate;
     using global::NHibernate.Linq;
 
-    public class BaseRepository<TDomain> where TDomain : Entity
+    public class BaseRepository<T> : IBaseRepository<T> where T : Entity
     {
-        public TDomain GetById(int id)
+        public T GetById(int id)
         {
-            return GetSession().Get<TDomain>(id);
+            return GetSession().Get<T>(id);
         }
 
-        public virtual List<TDomain> GetAll()
+        public virtual List<T> GetAll()
         {
-            return GetSession().Query<TDomain>().ToList();
+            return GetSession().Query<T>().ToList();
         }
 
-        public void SaveOrUpdate(TDomain domain)
+        public void SaveOrUpdate(T domain)
         {
             GetSession().SaveOrUpdate(domain);
         }
 
-        public void Delete(TDomain domain)
+        public void Delete(T domain)
         {
             GetSession().Delete(domain);
         }
