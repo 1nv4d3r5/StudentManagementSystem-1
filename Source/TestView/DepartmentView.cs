@@ -4,7 +4,7 @@ using Services.Contracts;
 
 namespace TestView
 {
-    public class DepartmentView : IDepartmentView
+    public class DepartmentView
     {
         private readonly IDepartmentService departmentService;
 
@@ -24,9 +24,5 @@ namespace TestView
                 Console.WriteLine("Department Name \t {0}", department.Name);
             }
         }
-    }
-
-    public interface IDepartmentView
-    {
     }
 }

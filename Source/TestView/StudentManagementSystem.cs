@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TestView
 {
-    public class StudentManagementSystem : IStudentManagementSystem
+    public class StudentManagementSystem
     {
         private readonly Dictionary<int, Action> gotoWhen;
 
@@ -74,10 +74,5 @@ namespace TestView
         {
             Console.WriteLine("\n\nExiting the system.. See you soon..");
         }
-    }
-
-    public interface IStudentManagementSystem
-    {
-        void Index();
     }
 }

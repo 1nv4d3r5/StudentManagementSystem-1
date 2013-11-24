@@ -5,7 +5,7 @@ using Services.Service;
 
 namespace TestView
 {
-    public class StudentView : IStudentView
+    public class StudentView
     {
         private readonly IStudentService studentService;
 
@@ -29,9 +29,5 @@ namespace TestView
                 Console.WriteLine("JoinDate \t {0}", student.JoinDate);
             }
         }
-    }
-
-    public interface IStudentView
-    {
     }
 }

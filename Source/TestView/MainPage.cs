@@ -12,9 +12,8 @@ namespace TestView
         {
            DependencyInjector.ConfigureDependencies();
 
-            IStudentManagementSystem studentManagementSystem = ObjectFactory.GetInstance<StudentManagementSystem>();
+            var studentManagementSystem = ObjectFactory.GetInstance<StudentManagementSystem>();
             studentManagementSystem.Index();
-            Console.ReadKey();
         }
     }
 }
