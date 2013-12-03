@@ -95,5 +95,25 @@
             Assert.That(exception.InnerException.GetType(), Is.EqualTo(typeof(SqlException)));
             Assert.That(exception.InnerException.Message.Contains("Violation of UNIQUE KEY constraint"));
         }
+
+        [Test]
+        public void ShouldSaveAndFetchStudentWithDepartment()
+        {
+            var department = new DepartmentBuilder().Build();
+            var departmentRepository = new DepartmentRepository();
+            departmentRepository.SaveOrUpdate(department);
+
+            var student = new StudentBuilder().Build();
+            student.Department = department;
+            studentRepository.SaveOrUpdate(student);
+            FlushAndClearSession();
+
+            var studentRetrieved = studentRepository.GetById(student.Id);
+
+            Assert.IsNotNull(studentRetrieved);
+            Assert.That(studentRetrieved.Id, Is.Not.EqualTo(0));
+            Assert.That(studentRetrieved.Department, Is.Not.Null);
+            Assert.That(studentRetrieved.Department.Code, Is.EqualTo(department.Code));
+        }
     }
 }

@@ -13,5 +13,7 @@ namespace Services.Models
         public string LastName { get; set; }
 
         public DateTime JoinDate { get; set; }
+
+        public DepartmentViewModel Department { get; set; }
     }
 }
