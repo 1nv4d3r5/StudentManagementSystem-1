@@ -1,8 +1,11 @@
-﻿using Services.Models;
+﻿using System.Collections.Generic;
+
+using Services.Models;
 
 namespace Services.Contracts
 {
-    public interface IStudentService : IService<StudentViewModel>
+    public interface IStudentService
     {
+        List<StudentViewModel> GetAll();
     }
 }

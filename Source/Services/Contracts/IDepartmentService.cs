@@ -1,8 +1,11 @@
-﻿using Services.Models;
+﻿using System.Collections.Generic;
+
+using Services.Models;
 
 namespace Services.Contracts
 {
-    public interface IDepartmentService : IService<DepartmentViewModel>
+    public interface IDepartmentService
     {
+        List<DepartmentViewModel> GetAll();
     }
 }

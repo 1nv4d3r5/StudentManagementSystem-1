@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IService.cs" />
+    <Compile Include="Mapper\DomainViewModelMapper.cs" />
     <Compile Include="Models\DepartmentViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\ViewModel.cs" />
@@ -53,8 +53,6 @@
     <Compile Include="Service\DepartmentService.cs" />
     <Compile Include="Contracts\IDepartmentService.cs" />
     <Compile Include="Contracts\IStudentService.cs" />
-    <Compile Include="Service\DomainViewModelMapper.cs" />
-    <Compile Include="Service\Service.cs" />
     <Compile Include="Service\StudentService.cs" />
   </ItemGroup>
   <ItemGroup>
